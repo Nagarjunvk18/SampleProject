@@ -10,11 +10,15 @@ import com.forex.app.dto.BankDTO;
 import com.forex.app.dto.CurrencyConversionDTO;
 import com.forex.app.dto.CurrencyDTO;
 import com.forex.app.dto.CurrencyRateDTO;
+import com.forex.app.dto.TransactionDTO;
+import com.forex.app.dto.TransactionFeeDTO;
 import com.forex.app.entity.Bank;
 import com.forex.app.entity.BankAccount;
 import com.forex.app.entity.Currency;
 import com.forex.app.entity.CurrencyConversion;
 import com.forex.app.entity.CurrencyRate;
+import com.forex.app.entity.Transaction;
+import com.forex.app.entity.TransactionFee;
 
 public class MapperUtil {
 	private static final ModelMapper MAPPER = new ModelMapper();
@@ -89,4 +93,33 @@ public class MapperUtil {
 		return MAPPER.map(currencyList, new TypeToken<List<CurrencyRateDTO>>() {
 		}.getType());
 	}
+
+	// TransactionDTO
+	public static TransactionDTO toTransactionDTO(Transaction transaction) {
+		return MAPPER.map(transaction, TransactionDTO.class);
+	}
+
+	public static Transaction toTransactionEntity(TransactionDTO transactionDto) {
+		return MAPPER.map(transactionDto, Transaction.class);
+	}
+
+	public static List<TransactionDTO> mapToTransactionDtoList(List<Transaction> transactionList) {
+		return MAPPER.map(transactionList, new TypeToken<List<TransactionDTO>>() {
+		}.getType());
+	}
+
+	// TransactionFeeDTO
+	public static TransactionFeeDTO toTransactionFeeDTO(TransactionFee transactionFee) {
+		return MAPPER.map(transactionFee, TransactionFeeDTO.class);
+	}
+
+	public static TransactionFee toTransactionFeeEntity(TransactionFeeDTO transactionFeeDto) {
+		return MAPPER.map(transactionFeeDto, TransactionFee.class);
+	}
+
+	public static List<TransactionFeeDTO> mapToTransactionFeeDtoList(List<TransactionFee> transactionFeeList) {
+		return MAPPER.map(transactionFeeList, new TypeToken<List<TransactionFeeDTO>>() {
+		}.getType());
+	}
+
 }
